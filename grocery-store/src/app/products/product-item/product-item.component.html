@@ -1,9 +1,11 @@
 <div class="product-container">
-    <a href="/product-detail"><img src="{{product.url}}" class="product-image" alt="Photo of a Shiba Inu"></a>
+    <a [routerLink]="['/product-detail', product.id]">
+      <img src="{{product.url}}" class="product-image" alt="Photo of a Shiba Inu">
+    </a>
     <p>{{product.name}}</p>
     <p>${{product.price}}</p>
     <select class="select-input">
       <option *ngFor="let number of numbers">{{number}}</option>
     </select>
-    <button (click)="addToCart()">Add to cart</button>
+    <button mat-raised-button color="primary" (click)="addToCart()">Add to cart</button>
   </div>

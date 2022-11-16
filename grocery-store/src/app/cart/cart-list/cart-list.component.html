@@ -1,1 +1,5 @@
-<p>cart-list works!</p>
+<div class="product-container">
+    <div  class="product-index">
+      <app-cart-item *ngFor="let product of cartList" [product]="product"></app-cart-item>
+    </div>
+  </div>
