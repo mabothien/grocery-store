@@ -7,9 +7,9 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input() product: Product
+  @Input() cartItem: Product
   constructor() {
-    this.product = {
+    this.cartItem = {
       id: 0,
       name: '',
       price: 0,
@@ -17,11 +17,10 @@ export class CartItemComponent implements OnInit {
       description: ''
     }
   }
-  addToCart() {
-    window.alert("added to cart")
-  }
   ngOnInit(): void {
 
   }
-
+  addToCart() {
+    window.alert("added to cart")
+  }
 }

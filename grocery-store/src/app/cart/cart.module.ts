@@ -6,8 +6,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CartItemComponent } from './cart-item/cart-item.component';
-
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,11 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     MatListModule,
     MatGridListModule,
     MatFormFieldModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    RouterModule
   ]
 })
 export class CartModule { }

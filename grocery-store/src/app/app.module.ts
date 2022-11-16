@@ -11,6 +11,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CartModule } from './cart/cart.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -21,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     HttpClientModule,
     ProductsModule,
+    CartModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,

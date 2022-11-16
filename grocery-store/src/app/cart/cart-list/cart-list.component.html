@@ -1,5 +1,11 @@
-<div class="product-container">
-    <div  class="product-index">
-      <app-cart-item *ngFor="let product of cartList" [product]="product"></app-cart-item>
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+    <div class="cart-container" *ngIf="cartList.length > 0">
+        <app-cart-item *ngFor="let item of cartList" [cartItem]="item"></app-cart-item>
+        <div>
+            <p>Total: $269.94</p>
+        </div>
     </div>
-  </div>
+    <div>
+        <app-checkout-form></app-checkout-form>
+    </div>
+</div>
