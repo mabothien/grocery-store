@@ -1,17 +1,31 @@
 <div class="product-container">
-    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-        <div><img src="{{product.url}}" class="product-image" alt="Photo of a Shiba Inu"></div>
-        <div fxLayout="column" fxLayoutGap="20px"  fxLayoutAlign="center center">
-            <h2>{{product.name}}</h2>
-            <p>${{product.price}}</p>
-            <span>{{product.description}}</span>
-            <mat-select [formControl]="quantity">
-                <mat-option *ngFor="let number of numbers" [value]="number">
-                  {{number}}
-                </mat-option>
-              </mat-select>
-            <button mat-raised-button color="primary" (click)="addToCart()">Add to cart</button>
-            <a href="/">Back to product list</a>
-          </div>
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+    <div>
+      <img
+        src="{{ product.url }}"
+        class="product-image"
+        alt="Photo of a Shiba Inu"
+      />
     </div>
+    <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center center">
+      <h2>{{ product.name }}</h2>
+      <p>${{ product.price }}</p>
+      <span>{{ product.description }}</span>
+      <select
+            [(ngModel)]="currentQuantity"
+            name="currentQuantity"
+            class="select-input"
+            (ngModelChange)="onSelectQuantity()"
+        >
+            <option *ngFor="let number of numbers" [ngValue]="number">
+            {{ number }}
+            </option>
+            </select>
+
+      <button mat-raised-button color="primary" (ngModelChange)="addToCart()">
+        Add to cart
+      </button>
+      <a href="/">Back to product list</a>
+    </div>
+  </div>
 </div>

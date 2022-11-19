@@ -1,11 +1,14 @@
 <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-    <div class="cart-container" *ngIf="cartList.length > 0">
-        <app-cart-item *ngFor="let item of cartList" [cartItem]="item"></app-cart-item>
-        <div>
-            <p>Total: $269.94</p>
-        </div>
-    </div>
+  <div class="cart-container">
+    <app-cart-item
+      *ngFor="let item of cartList"
+      [cartItem]="item"
+    ></app-cart-item>
     <div>
-        <app-checkout-form></app-checkout-form>
+      <p>Total: ${{ totalPrice() }}</p>
     </div>
+  </div>
+  <div>
+    <app-checkout-form></app-checkout-form>
+  </div>
 </div>

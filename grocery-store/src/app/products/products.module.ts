@@ -4,12 +4,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatListModule} from '@angular/material/list';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
-import {ReactiveFormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     ProductDetailComponent,
     ProductItemComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,8 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatSelectModule,
     ReactiveFormsModule,
-    RouterModule
-  ]
+    FormsModule,
+    RouterModule,
+  ],
 })
-export class ProductsModule { }
+export class ProductsModule {}

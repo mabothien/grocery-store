@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-  constructor(
-  ) { }
+  constructor() {}
 
   addToCart() {
-    window.alert(1)
+    window.alert(1);
   }
 }

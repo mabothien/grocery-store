@@ -7,17 +7,13 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [
-    CartListComponent,
-    CheckoutFormComponent,
-    CartItemComponent
-  ],
+  declarations: [CartListComponent, CheckoutFormComponent, CartItemComponent],
   imports: [
     CommonModule,
     MatListModule,
@@ -27,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    RouterModule
-  ]
+    RouterModule,
+    FormsModule
+  ],
 })
-export class CartModule { }
+export class CartModule {}
