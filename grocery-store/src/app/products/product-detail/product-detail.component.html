@@ -12,20 +12,20 @@
       <p>${{ product.price }}</p>
       <span>{{ product.description }}</span>
       <select
-            [(ngModel)]="currentQuantity"
-            name="currentQuantity"
-            class="select-input"
-            (ngModelChange)="onSelectQuantity()"
-        >
-            <option *ngFor="let number of numbers" [ngValue]="number">
-            {{ number }}
-            </option>
-            </select>
+        [(ngModel)]="currentQuantity"
+        name="currentQuantity"
+        class="form-select"
+        (ngModelChange)="onSelectQuantity()"
+      >
+        <option *ngFor="let number of numbers" [ngValue]="number">
+          {{ number }}
+        </option>
+      </select>
 
-      <button mat-raised-button color="primary" (ngModelChange)="addToCart()">
+      <button mat-raised-button color="primary" (click)="addToCart()">
         Add to cart
       </button>
-      <a href="/">Back to product list</a>
+      <a href="/" routerLink="/">Back to product list</a>
     </div>
   </div>
 </div>

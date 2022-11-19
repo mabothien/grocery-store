@@ -13,7 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailComponent implements OnInit {
   numbers: Array<number> = [];
   quantity = new FormControl(0);
-  currentQuantity = 0
+  currentQuantity = 1;
   product: Product = {
     id: 1,
     name: '',
@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private cartService: CartService,
-    private ProductService: ProductService
+    private productService: ProductService
   ) {}
 
   async ngOnInit() {
@@ -35,19 +35,22 @@ export class ProductDetailComponent implements OnInit {
     });
     this.numbers = Array(10)
       .fill(0)
-      .map((x, i) => i);
-    await this.ProductService.getProductById(parseInt(this.productId)).subscribe(
-      (res: Product[]) => {
+      .map((x, i) => i + 1);
+    await this.productService
+      .getProductById(parseInt(this.productId))
+      .subscribe((res: Product[]) => {
         this.product = res[0];
-      }
-    );
-    this.currentQuantity = this.product.quantity
-    console.log(this.product);
+      });
+    this.currentQuantity = this.product.quantity;
   }
   onSelectQuantity() {
     this.product.quantity = this.currentQuantity;
   }
-  addToCart() {
-    this.cartService.addToCart();
+  addToCart(): void {
+    if (!this.productService.productInCart(this.product)) {
+      this.productService.addToCart(this.product);
+    } else {
+      this.productService.saveTermp();
+    }
   }
 }

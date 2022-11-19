@@ -9,20 +9,28 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartListComponent implements OnInit {
   cartList: Product[] = [];
-  constructor(private ProductService: ProductService) {}
+  constructor(private productService: ProductService) {}
 
   async ngOnInit() {
-    await this.ProductService.getProductToCart();
-    this.cartList = [...this.ProductService.products];
+    console.log(1);
+    await this.productService.getProductToCart();
+    this.cartList = [...this.productService.products];
   }
 
   totalPrice() {
-    return this.cartList.reduce(
-      (sum, product) => ({
-        quantity: 1,
-        price: sum.price + product.quantity * product.price,
-      }),
-      { quantity: 1, price: 0 }
-    ).price.toFixed();
+    return this.cartList
+      .reduce(
+        (sum, product) => ({
+          quantity: 1,
+          price: sum.price + product.quantity * product.price,
+        }),
+        { quantity: 1, price: 0 }
+      )
+      .price.toFixed();
+  }
+
+  removeProduct(product: Product) {
+    this.productService.clearProduct(product);
+    this.cartList = [...this.productService.products];
   }
 }

@@ -11,7 +11,7 @@
   <select
     [(ngModel)]="currentQuantity"
     name="currentQuantity"
-    class="select-input"
+    class="form-select"
     (ngModelChange)="onSelectQuantity()"
   >
     <option *ngFor="let number of numbers" [ngValue]="number">

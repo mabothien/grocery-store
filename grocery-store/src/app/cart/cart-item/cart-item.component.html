@@ -12,17 +12,20 @@
       <p>${{ cartItem.price }}</p>
       <span>{{ cartItem.description }}</span>
       <div>
-          <mat-label>Amount:</mat-label>
-          <select
-            [(ngModel)]="currentQuantity"
-            name="currentQuantity"
-            class="select-input"
-            (ngModelChange)="onSelectQuantity()"
-        >
-            <option *ngFor="let number of numbers" [ngValue]="number">
-            {{ number }}
-            </option>
-        </select>
+        <div class="mb-3 row">
+          <label for="amount" class="col-sm-2 col-form-label">Amount</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              id="amount"
+              class="form-control"
+              [(ngModel)]="currentQuantity"
+              [ngModelOptions]="{ standalone: true }"
+              name="currentQuantity"
+              (ngModelChange)="onSelectQuantity()"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>

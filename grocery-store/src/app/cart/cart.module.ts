@@ -24,7 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatButtonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
 })
 export class CartModule {}

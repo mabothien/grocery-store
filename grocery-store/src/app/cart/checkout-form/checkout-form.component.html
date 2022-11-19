@@ -1,24 +1,56 @@
 <div fxLayout="column">
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Full name</mat-label>
-      <input matInput minlength="3" placeholder="(minimum 3 characters)" />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Address</mat-label>
-      <input matInput minlength="6" placeholder="(minimum 6 characters)" />
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>Credit card number</mat-label>
-      <input matInput placeholder="16-digit number" />
-    </mat-form-field>
-  </div>
-  <p>We'll never share your payment details with anyone else.</p>
-  <div>
-    <button mat-raised-button color="primary">Submit</button>
-  </div>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input
+          matInput
+          required
+          minlength="3"
+          name="fullName"
+          [(ngModel)]="personInfor.fullName"
+          appForbiddenName="fullName"
+          placeholder="(minimum 3 characters)"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          required
+          minlength="6"
+          name="address"
+          [(ngModel)]="personInfor.address"
+          appForbiddenName="address"
+          placeholder="(minimum 6 characters)"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Credit card number</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="personInfor.creditNumber"
+          name="creditNumber"
+          appForbiddenName="creditNumber"
+          placeholder="16-digit number"
+        />
+      </mat-form-field>
+    </div>
+    <p>We'll never share your payment details with anyone else.</p>
+    <div>
+      <button
+        [disabled]="form.invalid"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
 </div>

@@ -25,7 +25,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
     this.numbers = Array(10)
       .fill(0)
-      .map((x, i) => i);
+      .map((x, i) => i + 1);
   }
 
   onSelectQuantity() {

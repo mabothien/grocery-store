@@ -3,9 +3,10 @@
     <app-cart-item
       *ngFor="let item of cartList"
       [cartItem]="item"
+      (removeProduct)="removeProduct($event)"
     ></app-cart-item>
     <div>
-      <p>Total: ${{ totalPrice() }}</p>
+      <h2>Total: ${{ totalPrice() }}</h2>
     </div>
   </div>
   <div>

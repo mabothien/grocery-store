@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-checkout-form',
@@ -6,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout-form.component.scss'],
 })
 export class CheckoutFormComponent implements OnInit {
-  constructor() {}
+  personInfor = {
+    fullName: '',
+    address: '',
+    creditNumber: '',
+  };
+
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    this.router.navigate(['/success']);
+    this.productService.clearCart();
+  }
 }
