@@ -11,9 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartListComponent implements OnInit {
   cartList: Product[] = [];
-  constructor(
-    private productService: ProductService,
-    private router: Router) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   async ngOnInit() {
     await this.productService.getProductToCart();
@@ -38,8 +36,8 @@ export class CartListComponent implements OnInit {
   }
 
   onSubmitForm(userInfor: User) {
-    userInfor.totalPrice = Number(this.totalPrice())
-    this.productService.saveUserInfor(userInfor)
+    userInfor.totalPrice = Number(this.totalPrice());
+    this.productService.saveUserInfor(userInfor);
     this.router.navigate(['/success']);
   }
 }

@@ -20,7 +20,6 @@ export class ConfirmationComponent implements OnInit {
       totalPrice: 0,
       creditNumber: ''
     }
-
   }
 
   ngOnInit(): void {

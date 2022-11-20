@@ -9,12 +9,12 @@ import { User } from '../models/user';
 })
 export class ProductService {
   products: Product[] = [];
-  user:User = {
+  user: User = {
     totalPrice: 0,
     fullName: '',
     address: '',
-    creditNumber: ''
-  }
+    creditNumber: '',
+  };
   private personURL = 'http://localhost:5000/products';
   constructor(private http: HttpClient) {}
 
@@ -46,7 +46,7 @@ export class ProductService {
       this.products.push(product);
     }
     this.saveTermp();
-    window.alert("Added to cart!")
+    window.alert('Added to cart!');
   }
 
   getProductToCart(): void {
@@ -64,7 +64,7 @@ export class ProductService {
     if (index > -1) {
       this.products.splice(index, 1);
       this.saveTermp();
-      window.alert("Remove from cart")
+      window.alert('Remove from cart');
     }
   }
 

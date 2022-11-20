@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint --fix",
+    "prettier-format": "npx prettier --write .",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -5,9 +5,9 @@ export class User {
   creditNumber: string;
 
   constructor() {
-    this.fullName = '',
-    this.address = '',
-    this.totalPrice = 0,
-    this.creditNumber = ''
+    (this.fullName = ''),
+      (this.address = ''),
+      (this.totalPrice = 0),
+      (this.creditNumber = '');
   }
 }
