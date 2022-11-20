@@ -18,10 +18,6 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    if (!this.productService.productInCart(product)) {
-      this.productService.addToCart(product);
-    } else {
-      this.productService.saveTermp();
-    }
+    this.productService.addToCart(product);
   }
 }

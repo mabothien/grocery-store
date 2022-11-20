@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { User } from 'src/app/models/user';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,10 +11,11 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartListComponent implements OnInit {
   cartList: Product[] = [];
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router) {}
 
   async ngOnInit() {
-    console.log(1);
     await this.productService.getProductToCart();
     this.cartList = [...this.productService.products];
   }
@@ -32,5 +35,11 @@ export class CartListComponent implements OnInit {
   removeProduct(product: Product) {
     this.productService.clearProduct(product);
     this.cartList = [...this.productService.products];
+  }
+
+  onSubmitForm(userInfor: User) {
+    userInfor.totalPrice = Number(this.totalPrice())
+    this.productService.saveUserInfor(userInfor)
+    this.router.navigate(['/success']);
   }
 }

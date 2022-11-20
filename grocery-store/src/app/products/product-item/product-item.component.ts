@@ -10,7 +10,7 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   @Output() addToCart: EventEmitter<Product> = new EventEmitter();
   numbers: Array<number> = [];
-  currentQuantity = 0;
+  currentQuantity = 1;
   constructor() {
     this.product = {
       id: 1,

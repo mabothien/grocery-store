@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,18 +9,20 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./checkout-form.component.scss'],
 })
 export class CheckoutFormComponent implements OnInit {
-  personInfor = {
+  @Output() submit: EventEmitter<User> = new EventEmitter();
+  personInfor: User = {
     fullName: '',
     address: '',
+    totalPrice: 0,
     creditNumber: '',
   };
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit() {
-    this.router.navigate(['/success']);
-    this.productService.clearCart();
+    this.submit.emit(this.personInfor)
   }
 }

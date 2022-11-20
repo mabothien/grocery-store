@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   products: Product[] = [];
+  user:User = {
+    totalPrice: 0,
+    fullName: '',
+    address: '',
+    creditNumber: ''
+  }
   private personURL = 'http://localhost:5000/products';
   constructor(private http: HttpClient) {}
 
@@ -17,6 +24,10 @@ export class ProductService {
 
   getProduct() {
     return this.products;
+  }
+
+  getUser() {
+    return this.user;
   }
 
   getProductById(id: number): Observable<Product[]> {
@@ -31,8 +42,11 @@ export class ProductService {
   }
 
   addToCart(product: Product) {
-    this.products.push(product);
+    if (!this.productInCart(product)) {
+      this.products.push(product);
+    }
     this.saveTermp();
+    window.alert("Added to cart!")
   }
 
   getProductToCart(): void {
@@ -50,10 +64,15 @@ export class ProductService {
     if (index > -1) {
       this.products.splice(index, 1);
       this.saveTermp();
+      window.alert("Remove from cart")
     }
   }
 
   clearCart() {
     localStorage.clear();
+  }
+
+  saveUserInfor(user: User) {
+    localStorage.setItem('user_information', JSON.stringify(user));
   }
 }

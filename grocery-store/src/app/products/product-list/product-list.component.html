@@ -1,9 +1,7 @@
-<div class="product-container">
-  <div class="product-index">
-    <app-product-item
-      *ngFor="let product of productList"
-      [product]="product"
-      (addToCart)="addToCart($event)"
-    ></app-product-item>
-  </div>
+<div class="container-fluid mt-3 gap-3 d-flex flex-row flex-wrap">
+  <app-product-item
+    *ngFor="let product of productList"
+    [product]="product"
+    (addToCart)="addToCart($event)"
+  ></app-product-item>
 </div>

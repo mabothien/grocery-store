@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
-import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -25,7 +24,6 @@ export class ProductDetailComponent implements OnInit {
   productId = '';
   constructor(
     private router: ActivatedRoute,
-    private cartService: CartService,
     private productService: ProductService
   ) {}
 
@@ -33,9 +31,11 @@ export class ProductDetailComponent implements OnInit {
     this.router.params.subscribe((params) => {
       this.productId = params['id'];
     });
+
     this.numbers = Array(10)
       .fill(0)
       .map((x, i) => i + 1);
+
     await this.productService
       .getProductById(parseInt(this.productId))
       .subscribe((res: Product[]) => {
@@ -47,10 +47,6 @@ export class ProductDetailComponent implements OnInit {
     this.product.quantity = this.currentQuantity;
   }
   addToCart(): void {
-    if (!this.productService.productInCart(this.product)) {
-      this.productService.addToCart(this.product);
-    } else {
-      this.productService.saveTermp();
-    }
+    this.productService.addToCart(this.product);
   }
 }
