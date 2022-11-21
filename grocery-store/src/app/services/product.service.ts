@@ -10,7 +10,6 @@ import { CartProduct } from '../models/cartProduct';
 })
 export class ProductService {
   cartProduct: CartProduct[] = [];
-  totalCart: number;
   user: User = {
     totalPrice: 0,
     fullName: '',
@@ -18,9 +17,6 @@ export class ProductService {
     creditNumber: '',
   };
   private personURL = 'http://localhost:5000/products';
-  constructor(private http: HttpClient) {
-    this.totalCart = 0
-  }
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.personURL);
@@ -55,13 +51,13 @@ export class ProductService {
     window.alert('Added to cart!');
   }
 
-  onUpdateQuantity(product: Product, quantity:number) {
+  onUpdateQuantity(product: Product, quantity: number) {
     const index = this.cartProduct.findIndex((i: Product) => i.id === product.id);
     if (index > -1) {
       this.cartProduct[index].quantity = quantity
     }
   }
-  remove(id:number) {
+  remove(id: number) {
     const index = this.cartProduct.findIndex((i: Product) => i.id === id);
   }
 
@@ -90,12 +86,5 @@ export class ProductService {
 
   saveUserInfor(user: User) {
     localStorage.setItem('user_information', JSON.stringify(user));
-  }
-
-  getAmountProduct(): number {
-    const amountProduct = this.cartProduct.reduce((prev, curr): number => {
-      return prev + curr.quantity;
-    }, 0);
-    return amountProduct;
   }
 }
