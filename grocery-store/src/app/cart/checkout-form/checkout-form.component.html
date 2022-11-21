@@ -7,12 +7,27 @@
           matInput
           required
           minlength="3"
+          maxlength="30"
           name="fullName"
+          #fullName="ngModel"
           [(ngModel)]="personInfor.fullName"
           appForbiddenName="fullName"
           placeholder="(minimum 3 characters)"
         />
       </mat-form-field>
+      <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+        class="text-danger">
+
+        <div *ngIf="fullName.errors?.['required']">
+          fullName is required.
+        </div>
+        <div *ngIf="fullName.errors?.['minlength']">
+          fullName must be at least 3 characters long.
+        </div>
+        <div *ngIf="fullName.errors?.['forbiddenName']">
+          fullName cannot be Bob.
+        </div>
+      </div>
     </div>
     <div>
       <mat-form-field appearance="outline">
@@ -22,11 +37,22 @@
           required
           minlength="6"
           name="address"
+          #address="ngModel"
           [(ngModel)]="personInfor.address"
           appForbiddenName="address"
           placeholder="(minimum 6 characters)"
         />
       </mat-form-field>
+      <div *ngIf="address.invalid && (address.dirty || address.touched)"
+        class="text-danger">
+
+        <div *ngIf="address.errors?.['required']">
+          address is required.
+        </div>
+        <div *ngIf="address.errors?.['minlength']">
+          address must be at least 6 characters long.
+        </div>
+      </div>
     </div>
     <div>
       <mat-form-field appearance="outline">
@@ -34,12 +60,26 @@
         <input
           matInput
           required
+          pattern="[0-9]{16,16}"
+          maxlength="16"
+          name="credit"
+          #credit="ngModel"
           [(ngModel)]="personInfor.creditNumber"
           name="creditNumber"
           appForbiddenName="creditNumber"
           placeholder="16-digit number"
         />
       </mat-form-field>
+      <div *ngIf="credit.invalid && (credit.dirty || credit.touched)"
+        class="text-danger">
+
+        <div *ngIf="credit.errors?.['required']">
+          credit number is required.
+        </div>
+        <div *ngIf="credit.errors?.['pattern']">
+          credit number must have 16 number
+        </div>
+      </div>
     </div>
     <p>We'll never share your payment details with anyone else.</p>
     <div>

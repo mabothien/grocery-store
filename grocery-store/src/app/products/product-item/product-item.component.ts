@@ -8,7 +8,8 @@ import { Product } from './../../models/product';
 })
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
-  @Output() addToCart: EventEmitter<Product> = new EventEmitter();
+  @Output() addToCart: EventEmitter<any> = new EventEmitter();
+  @Output() selectQuantityEvent: EventEmitter<any> = new EventEmitter();
   numbers: Array<number> = [];
   currentQuantity = 1;
   constructor() {
@@ -18,7 +19,6 @@ export class ProductItemComponent implements OnInit {
       price: 0,
       url: '',
       description: '',
-      quantity: 1,
     };
   }
 
@@ -29,9 +29,9 @@ export class ProductItemComponent implements OnInit {
   }
 
   onSelectQuantity() {
-    this.product.quantity = this.currentQuantity;
+    this.selectQuantityEvent.emit({product:this.product ,quantity: this.currentQuantity})
   }
-  onAddToCart() {
-    this.addToCart.emit(this.product);
+  onAddToCart(product: Product) {
+    this.addToCart.emit({product:this.product ,quantity: this.currentQuantity});
   }
 }

@@ -6,7 +6,8 @@
       alt="Photo of {{ cartItem.name }}"
     />
   </div>
-  <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center left">
+  <div class="cart-item" fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center left">
+    <button class="btn btn-remove" (click)="remove()"><i class="bi bi-trash text-danger"></i></button>
     <h2>{{ cartItem.name }}</h2>
     <p>${{ cartItem.price }}</p>
     <span>{{ cartItem.description }}</span>
@@ -17,7 +18,9 @@
           <input
             type="number"
             id="amount"
+            min="0"
             class="form-control"
+            oninput="this.currentQuantity = Math.abs(this.currentQuantity)"
             [(ngModel)]="currentQuantity"
             [ngModelOptions]="{ standalone: true }"
             name="currentQuantity"

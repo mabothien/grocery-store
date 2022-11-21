@@ -19,7 +19,6 @@ export class ProductDetailComponent implements OnInit {
     price: 0,
     url: '',
     description: '',
-    quantity: 1,
   };
   productId = '';
   constructor(
@@ -41,12 +40,15 @@ export class ProductDetailComponent implements OnInit {
       .subscribe((res: Product[]) => {
         this.product = res[0];
       });
-    this.currentQuantity = this.product.quantity;
+      const index = this.productService.cartProduct.findIndex((x) => x.id === Number(this.productId))
+      this.currentQuantity = this.productService.cartProduct[index].quantity
   }
   onSelectQuantity() {
-    this.product.quantity = this.currentQuantity;
+    this.productService.onUpdateQuantity(this.product, this.currentQuantity)
+    // const index = this.productService.cartProduct.findIndex((x) => x.id === this.product.id)
+    // this.currentQuantity = this.productService.cartProduct[index].quantity
   }
   addToCart(): void {
-    this.productService.addToCart(this.product);
+    this.productService.addToCart(this.product,this.currentQuantity);
   }
 }

@@ -1,4 +1,8 @@
 <div class="mt-3 justify-content-between" fxLayout="row">
+  <div *ngIf="isEmpty(); else elseBlock">
+    <h2>Your cart is empty!</h2>
+  </div>
+  <ng-template #elseBlock>
   <div class="cart-container">
     <app-cart-item
       *ngFor="let item of cartList"
@@ -12,4 +16,5 @@
   <div>
     <app-checkout-form (submit)="onSubmitForm($event)"></app-checkout-form>
   </div>
+</ng-template>
 </div>

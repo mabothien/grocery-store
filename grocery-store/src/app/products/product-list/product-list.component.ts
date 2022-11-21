@@ -17,7 +17,10 @@ export class ProductListComponent implements OnInit {
       .subscribe((res) => (this.productList = res));
   }
 
-  addToCart(product: Product): void {
-    this.productService.addToCart(product);
+  addToCart(params: any): void {
+    this.productService.addToCart(params.product,params.quantity);
+  }
+  onSelectQuantityEvent(params: any) {
+    this.productService.onUpdateQuantity(params.product,params.quantity)
   }
 }

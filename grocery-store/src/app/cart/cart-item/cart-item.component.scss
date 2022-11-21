@@ -3,3 +3,11 @@
   width: 180px;
   border-radius: 8px;
 }
+.cart-item {
+  position: relative;
+  .btn-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

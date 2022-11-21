@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { CartProduct } from 'src/app/models/cartProduct';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,11 +9,11 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./cart-item.component.scss'],
 })
 export class CartItemComponent implements OnInit {
-  @Input() cartItem: Product;
-  @Output() removeProduct: EventEmitter<Product> = new EventEmitter();
+  @Input() cartItem: CartProduct;
+  @Output() removeProduct: EventEmitter<CartProduct> = new EventEmitter();
   numbers: Array<number> = [];
   currentQuantity = 0;
-  constructor(private productService: ProductService) {
+  constructor() {
     this.cartItem = {
       id: 1,
       name: '',
@@ -37,6 +38,9 @@ export class CartItemComponent implements OnInit {
     if (this.currentQuantity === 0) {
       this.removeProduct.emit(this.cartItem);
     }
-    console.log(this.currentQuantity);
+  }
+
+  remove() {
+    this.removeProduct.emit(this.cartItem)
   }
 }
