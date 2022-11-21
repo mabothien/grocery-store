@@ -18,9 +18,9 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(params: any): void {
-    this.productService.addToCart(params.product,params.quantity);
+    this.productService.addToCart(params.product, params.quantity);
   }
   onSelectQuantityEvent(params: any) {
-    this.productService.onUpdateQuantity(params.product,params.quantity)
+    this.productService.onUpdateQuantity(params.product, params.quantity);
   }
 }

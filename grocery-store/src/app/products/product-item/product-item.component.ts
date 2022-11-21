@@ -29,9 +29,15 @@ export class ProductItemComponent implements OnInit {
   }
 
   onSelectQuantity() {
-    this.selectQuantityEvent.emit({product:this.product ,quantity: this.currentQuantity})
+    this.selectQuantityEvent.emit({
+      product: this.product,
+      quantity: this.currentQuantity,
+    });
   }
   onAddToCart(product: Product) {
-    this.addToCart.emit({product:this.product ,quantity: this.currentQuantity});
+    this.addToCart.emit({
+      product: this.product,
+      quantity: this.currentQuantity,
+    });
   }
 }

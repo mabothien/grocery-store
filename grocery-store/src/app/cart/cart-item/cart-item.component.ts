@@ -40,7 +40,13 @@ export class CartItemComponent implements OnInit {
     }
   }
 
+  onKeyDown(e: KeyboardEvent) {
+    if (e.code === 'Minus' && e.key === '-' && e.keyCode === 189) {
+      e.preventDefault();
+    }
+  }
+
   remove() {
-    this.removeProduct.emit(this.cartItem)
+    this.removeProduct.emit(this.cartItem);
   }
 }

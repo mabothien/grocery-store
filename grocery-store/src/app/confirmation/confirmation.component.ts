@@ -9,27 +9,19 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./confirmation.component.scss'],
 })
 export class ConfirmationComponent implements OnInit {
-  user = {} as User
-  constructor(
-    private router: Router,
-    private productservice: ProductService
-  ) {
+  user = {} as User;
+  constructor(private router: Router, private productservice: ProductService) {
     this.user = {
       fullName: '',
       address: '',
       totalPrice: 0,
-      creditNumber: ''
-    }
+      creditNumber: '',
+    };
   }
 
-  ngOnInit(): void {
-    if (localStorage.getItem('user_information')) {
-      this.user = JSON.parse(localStorage.getItem('user_information') || '');
-    }
-  }
+  ngOnInit(): void { }
 
   gotoBack() {
-    this.productservice.clearCart()
-    this.router.navigate(["/"])
+    this.router.navigate(['/']);
   }
 }

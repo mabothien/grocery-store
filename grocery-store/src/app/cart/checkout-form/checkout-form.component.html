@@ -6,7 +6,7 @@
         <input
           matInput
           required
-          minlength="3"
+          minlength="8"
           maxlength="30"
           name="fullName"
           #fullName="ngModel"
@@ -15,14 +15,13 @@
           placeholder="(minimum 3 characters)"
         />
       </mat-form-field>
-      <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
-        class="text-danger">
-
-        <div *ngIf="fullName.errors?.['required']">
-          fullName is required.
-        </div>
+      <div
+        *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="fullName.errors?.['required']">fullName is required.</div>
         <div *ngIf="fullName.errors?.['minlength']">
-          fullName must be at least 3 characters long.
+          fullName must be at least 8 characters long.
         </div>
         <div *ngIf="fullName.errors?.['forbiddenName']">
           fullName cannot be Bob.
@@ -43,12 +42,11 @@
           placeholder="(minimum 6 characters)"
         />
       </mat-form-field>
-      <div *ngIf="address.invalid && (address.dirty || address.touched)"
-        class="text-danger">
-
-        <div *ngIf="address.errors?.['required']">
-          address is required.
-        </div>
+      <div
+        *ngIf="address.invalid && (address.dirty || address.touched)"
+        class="text-danger"
+      >
+        <div *ngIf="address.errors?.['required']">address is required.</div>
         <div *ngIf="address.errors?.['minlength']">
           address must be at least 6 characters long.
         </div>
@@ -70,9 +68,10 @@
           placeholder="16-digit number"
         />
       </mat-form-field>
-      <div *ngIf="credit.invalid && (credit.dirty || credit.touched)"
-        class="text-danger">
-
+      <div
+        *ngIf="credit.invalid && (credit.dirty || credit.touched)"
+        class="text-danger"
+      >
         <div *ngIf="credit.errors?.['required']">
           credit number is required.
         </div>

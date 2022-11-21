@@ -1,10 +1,10 @@
-import { Product } from "./product";
+import { Product } from './product';
 
 export class CartProduct extends Product {
   quantity: number;
 
   constructor(product: Product) {
-    super()
+    super();
     this.id = product.id;
     this.name = product.name;
     this.price = product.price;

@@ -3,18 +3,18 @@
     <h2>Your cart is empty!</h2>
   </div>
   <ng-template #elseBlock>
-  <div class="cart-container">
-    <app-cart-item
-      *ngFor="let item of cartList"
-      [cartItem]="item"
-      (removeProduct)="removeProduct($event)"
-    ></app-cart-item>
-    <div class="total">
-      <h2>Total: ${{ totalPrice() }}</h2>
+    <div class="cart-container">
+      <app-cart-item
+        *ngFor="let item of cartList"
+        [cartItem]="item"
+        (removeProduct)="removeProduct($event)"
+      ></app-cart-item>
+      <div class="total">
+        <h2>Total: ${{ totalPrice() }}</h2>
+      </div>
     </div>
-  </div>
-  <div>
-    <app-checkout-form (submit)="onSubmitForm($event)"></app-checkout-form>
-  </div>
-</ng-template>
+    <div>
+      <app-checkout-form (submit)="onSubmitForm($event)"></app-checkout-form>
+    </div>
+  </ng-template>
 </div>
