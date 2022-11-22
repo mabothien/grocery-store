@@ -19,9 +19,12 @@ export class ConfirmationComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void { }
+  async ngOnInit() {
+    this.user = await this.productservice.getUser();
+  }
 
   gotoBack() {
+    this.productservice.removeCartProduct()
     this.router.navigate(['/']);
   }
 }

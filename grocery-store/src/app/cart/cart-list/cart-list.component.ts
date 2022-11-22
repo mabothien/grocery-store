@@ -18,15 +18,7 @@ export class CartListComponent implements OnInit {
   }
 
   totalPrice() {
-    return this.cartList
-      .reduce(
-        (sum, product) => ({
-          quantity: 1,
-          price: sum.price + product.quantity * product.price,
-        }),
-        { quantity: 1, price: 0 }
-      )
-      .price.toFixed();
+    return this.productService.totalPrice()
   }
 
   removeProduct(product: CartProduct) {
@@ -34,7 +26,8 @@ export class CartListComponent implements OnInit {
   }
 
   onSubmitForm(userInfor: User) {
-    userInfor.totalPrice = Number(this.totalPrice());
+    this.productService.user = {...userInfor}
+    this.productService.user.totalPrice = Number(this.totalPrice());
     this.router.navigate(['/success']);
   }
 

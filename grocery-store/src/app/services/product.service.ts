@@ -72,4 +72,20 @@ export class ProductService {
       window.alert('Remove from cart');
     }
   }
+
+  removeCartProduct() {
+    this.cartProduct = []
+  }
+
+  totalPrice () {
+    return this.cartProduct
+    .reduce(
+      (sum, product) => ({
+        quantity: 1,
+        price: sum.price + product.quantity * product.price,
+      }),
+      { quantity: 1, price: 0 }
+    )
+    .price.toFixed();
+  }
 }
